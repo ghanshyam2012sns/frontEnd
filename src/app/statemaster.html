@@ -1,0 +1,63 @@
+<div class="container">
+  
+<form [formGroup]="CountryForm" (ngSubmit)="this[EventValue]()">
+  
+    <h3>Country Master</h3>
+    <div class="row">
+       
+    <table class="table">
+    <tr>
+      <td>Name</td>
+      <td>
+        <input type="hidden" formControlName="Id">
+        <input type="text" formControlName="Name">
+        <div *ngIf="submitted && Country.controls.Name.errors" class="text-danger">
+          <div *ngIf="Country.controls.Name.errors.required">Name is required</div>
+        </div> 
+      </td>
+    </tr>
+    
+    <tr>
+      <td>Name</td>
+      <td>
+          <select formControlName="CountryId">
+              <option 
+              *ngFor="let country of countries"
+              >{country.name}</option>
+
+          </select>
+      </td>
+    </tr>
+
+    <tr>
+
+      <td colspan="2">
+        <button type="submit" class="btn btn-primary">{{EventValue}}</button>
+      </td>
+    </tr>
+    
+  </table>
+  </div>
+   
+ <div class="row">
+  <table class="table table-striped">
+    <tr>
+      <td>Id</td>
+      <td>Name</td>
+      <td>Edit</td>
+      <td>Delete</td>
+    </tr>
+
+    <tr *ngFor="let d of data">
+      <td>{{d.Id}}</td>
+      <td>{{d.Name}}</td>
+     
+      <td><a (click)="EditData(d)" class="btn btn-warning">Edit</a></td>
+      <td><a (click)="deleteData(d.empId)" class="btn btn-danger">Delete</a></td>
+
+    </tr>
+  </table>
+</div>
+</form>
+
+</div>
