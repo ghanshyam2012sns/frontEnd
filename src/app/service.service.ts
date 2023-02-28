@@ -13,18 +13,34 @@ constructor(private http: HttpClient) { }
   }  
   getData(){
      
-    return this.http.get('/api/Employee');  //https://localhost:44352/ webapi host url
+    return this.http.get('/api/Country');  //https://localhost:44352/ webapi host url
   }
 
   postData(formData){
-    return this.http.post('/api/Employee',formData);
+    return this.http.post('/api/Country',formData);
   }
 
   putData(id,formData){
-    return this.http.put('/api/Employee/'+id,formData);
+    return this.http.put('/api/Country/'+id,formData);
   }
   deleteData(id){
-    return this.http.delete('/api/Employee/'+id);
+    return this.http.delete('/api/Country/'+id);
   }
-  
+
+  getDataState(){
+     
+    return this.http.get('/api/StateMaster');  //https://localhost:44352/ webapi host url
+  }
+
+  postDataState(formData){
+    return this.http.post('/api/StateMaster',formData);
+  }
+
+  putDataState(id,formData){
+    return this.http.put('/api/StateMaster/'+id,formData);
+  }
+  deleteDataState(id){
+    return this.http.delete('/api/StateMaster/'+id);
+  }
+
 }

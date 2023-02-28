@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "EmployeeFrontEnd": {
+    "FrontEnd": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "EmployeeFrontEnd:build"
+            "browserTarget": "FrontEnd:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "EmployeeFrontEnd:build:production"
+              "browserTarget": "FrontEnd:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "EmployeeFrontEnd:build"
+            "browserTarget": "FrontEnd:build"
           }
         },
         "test": {
@@ -110,15 +110,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "EmployeeFrontEnd:serve"
+            "devServerTarget": "FrontEnd:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "EmployeeFrontEnd:serve:production"
+              "devServerTarget": "FrontEnd:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "EmployeeFrontEnd"
+  "defaultProject": "FrontEnd"
 }

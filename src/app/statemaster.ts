@@ -7,18 +7,18 @@ import { FormGroup, FormControl,Validators } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'EmployeeFrontEnd';
+  title = 'FrontEnd';
    
   constructor(private ServiceService: ServiceService) { }
   data: any;
-  CountryForm: FormGroup;
+  StateForm: FormGroup;
   submitted = false; 
   EventValue: any = "Save";
 
   ngOnInit(): void {
     this.getdata();
 
-    this.CountryForm = new FormGroup({
+    this.StateForm = new FormGroup({
       Id: new FormControl(null),
       Name: new FormControl("",[Validators.required]),      
     })  
@@ -37,10 +37,10 @@ export class AppComponent {
   Save() { 
     this.submitted = true;
   
-     if (this.CountryForm.invalid) {
+     if (this.StateForm.invalid) {
             return;
      }
-    this.ServiceService.postData(this.CountryForm.value).subscribe((data: any[]) => {
+    this.ServiceService.postData(this.StateForm.value).subscribe((data: any[]) => {
       this.data = data;
       this.resetFrom();
 
@@ -49,25 +49,25 @@ export class AppComponent {
   Update() { 
     this.submitted = true;
   
-    if (this.CountryForm.invalid) {
+    if (this.StateForm.invalid) {
      return;
     }      
-    this.ServiceService.putData(this.CountryForm.value.Id,this.CountryForm.value).subscribe((data: any[]) => {
+    this.ServiceService.putData(this.StateForm.value.Id,this.StateForm.value).subscribe((data: any[]) => {
       this.data = data;
       this.resetFrom();
     })
   }
 
   EditData(Data) {
-    this.CountryForm.controls["empId"].setValue(Data.Id);
-    this.CountryForm.controls["empName"].setValue(Data.Name);    
+    this.StateForm.controls["empId"].setValue(Data.Id);
+    this.StateForm.controls["empName"].setValue(Data.Name);    
     this.EventValue = "Update";
   }
 
   resetFrom()
   {   
     this.getdata();
-    this.CountryForm.reset();
+    this.StateForm.reset();
     this.EventValue = "Save";
     this.submitted = false; 
   }
