@@ -11,12 +11,14 @@ export class AppComponent {
    
   constructor(private ServiceService: ServiceService) { }
   data: any;
+  countries: any;
   StateForm: FormGroup;
   submitted = false; 
   EventValue: any = "Save";
 
   ngOnInit(): void {
     this.getdata();
+    this.getCountries();
 
     this.StateForm = new FormGroup({
       Id: new FormControl(null),
@@ -24,12 +26,17 @@ export class AppComponent {
     })  
   }
   getdata() {
-    this.ServiceService.getData().subscribe((data: any[]) => {
+    this.ServiceService.getDataState().subscribe((data: any[]) => {
       this.data = data;
     })
   }
+  getCountries() {
+    this.ServiceService.getData().subscribe((data: any[]) => {
+      this.countries = data;
+    })
+  }
   deleteData(id) {
-    this.ServiceService.deleteData(id).subscribe((data: any[]) => {
+    this.ServiceService.deleteDataState(id).subscribe((data: any[]) => {
       this.data = data;
       this.getdata();
     })
@@ -40,7 +47,7 @@ export class AppComponent {
      if (this.StateForm.invalid) {
             return;
      }
-    this.ServiceService.postData(this.StateForm.value).subscribe((data: any[]) => {
+    this.ServiceService.postDataState(this.StateForm.value).subscribe((data: any[]) => {
       this.data = data;
       this.resetFrom();
 
@@ -52,7 +59,7 @@ export class AppComponent {
     if (this.StateForm.invalid) {
      return;
     }      
-    this.ServiceService.putData(this.StateForm.value.Id,this.StateForm.value).subscribe((data: any[]) => {
+    this.ServiceService.putDataState(this.StateForm.value.Id,this.StateForm.value).subscribe((data: any[]) => {
       this.data = data;
       this.resetFrom();
     })
